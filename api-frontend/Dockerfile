@@ -1,9 +1,5 @@
-FROM python 2.7
-LABEL hub_url Nibrasse/docker_tp_frontend
-RUN pip install request flask
-WORKDIR /app
-COPY ./api.py /app
-EXPOSE 8000
-ENTRYPOINT [ "python" ]
-CMD [ "/app/api.py" ]
-
+FROM ubuntu:latest
+RUN apt update
+RUN apt install -y python python-requests python-flask
+COPY api.py /srv
+CMD ["/usr/bin/python", "/srv/api.py"]
